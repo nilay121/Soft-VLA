@@ -1,0 +1,51 @@
+robot:
+
+  total_length: 0.190
+  num_segments: 5
+  total_mass: 0.170
+
+
+material:
+
+  youngs_modulus: 1.646439e6
+  poisson_ratio: 0.5
+
+
+simulation:
+
+  dt: 0.0002
+  gravity: -9.80513
+
+
+controller:
+
+  bend_kp: 50
+  extension_kp: 300
+
+
+pressure:
+
+  rise_time: 0.2
+  drop_time: 0.56
+  threshold: 0.2
+
+
+strain:
+
+  gain:
+    - 1.0133
+    - 1.0035
+    - 1.1092
+
+
+geometry:
+
+  delta: 0.020
+
+  theta:
+    - 90
+    - 210
+    - 330
+
+  inner_radius: 0.00639
+  outer_radius: 0.00779

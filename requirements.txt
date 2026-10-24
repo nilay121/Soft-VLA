@@ -1,0 +1,39 @@
+# Dependencies for Soft_VLA_traj_pick_place.
+#
+#   conda create -y -n soft_vla python=3.10
+#   conda activate soft_vla
+#   pip install torch==2.12.0 torchvision==0.27.0 \
+#       --index-url https://download.pytorch.org/whl/cu130
+#   pip install -r requirements.txt
+#
+# torch is NOT listed below because it must come from the CUDA-matched
+# index, not PyPI. cu130 is what this machine's driver (NVIDIA 590.48)
+# wants; check `nvidia-smi` or /proc/driver/nvidia/version before changing
+# it. The CPU-only wheel works too, but training takes hours instead of
+# ~25 minutes.
+
+# MuJoCo >= 3.0 is REQUIRED. The scene fails to compile on 2.x with
+#   "body mass is too small, cannot compute center of mass"
+# because robot_base carries only density="0" visual meshes.
+mujoco==3.5.0
+
+numpy>=2.0,<3
+PyYAML>=6.0            # configs/parameters.py reads configs/robot.yaml
+matplotlib>=3.7
+Pillow>=9.0
+opencv-python>=4.8     # video writing and the contact sheets
+
+# H.264 video. OpenCV's pip wheels can only write 'mp4v', which most
+# players refuse; viz/common.VideoRecorder re-encodes with the ffmpeg
+# bundled by this package. Without it videos are left in mp4v and a
+# warning is printed.
+imageio-ffmpeg>=0.4
+
+# Only VLA_control/traj_track_exp/training_paths.py needs this
+# (CubicSpline).
+scipy>=1.11
+
+# Only needed to regenerate the segmented meshes from the source CAD
+# (simulator/sim/tools/). The segmented meshes are committed, so this is
+# optional - drop it if the install is awkward.
+trimesh>=4.0

@@ -1,0 +1,89 @@
+# Allowlist: the repository holds only the simulator and the VLA control code
+# for continual_pick_place and traj_track_exp. Everything else is ignored
+# unless it is re-included below.
+
+# --- Top level: ignore everything, then re-include what belongs -------------
+/*
+!/.gitignore
+!/.github/
+!/requirements.txt
+!/simulator/
+!/VLA_control/
+
+# --- VLA_control: only the two experiments (no Benchmarks, Ablation, figures)
+/VLA_control/*
+!/VLA_control/continual_pick_place/
+!/VLA_control/traj_track_exp/
+
+# --- Inside each experiment: source files only -------------------------------
+/VLA_control/continual_pick_place/**
+/VLA_control/traj_track_exp/**
+!/VLA_control/continual_pick_place/**/
+!/VLA_control/traj_track_exp/**/
+!/VLA_control/continual_pick_place/**/*.py
+!/VLA_control/traj_track_exp/**/*.py
+!/VLA_control/continual_pick_place/**/*.sh
+!/VLA_control/traj_track_exp/**/*.sh
+
+# Generated data, weights, and results (whole directories, whatever is inside)
+/VLA_control/**/dataset*/
+/VLA_control/**/checkpoints/
+/VLA_control/**/goals/
+/VLA_control/**/results/
+/VLA_control/**/old_results/
+/VLA_control/**/seeds/
+/VLA_control/**/logs/
+/VLA_control/**/representative_images/
+
+# --- Simulator: code, scene XML, config, and the meshes the scenes load ------
+/simulator/**
+!/simulator/**/
+!/simulator/**/*.py
+!/simulator/**/*.xml
+!/simulator/**/*.yaml
+!/simulator/sim/meshes/**/*.stl
+!/simulator/sim/meshes/**/*.STL
+
+# --- Never tracked, anywhere -------------------------------------------------
+# Python caches, compiled extensions, local environments
+__pycache__/
+*.py[cod]
+*.so
+.pylibs/
+.venv/
+venv/
+env/
+
+# READMEs carry experimental results; only the results-free overview is kept
+README*
+!/.github/README.md
+
+# Model weights and arrays
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.npy
+*.npz
+
+# Figures, images, and rendered media
+*.fig
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.tif
+*.tiff
+*.webp
+*.svg
+*.eps
+*.pdf
+*.mp4
+
+# Logs, editor settings, and operating-system metadata
+*.log
+*.out
+.DS_Store
+.idea/
+.vscode/

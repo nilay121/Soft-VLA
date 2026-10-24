@@ -1,0 +1,852 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mujoco model="i_support">
+
+    <compiler
+        angle="degree"
+        inertiafromgeom="true"/>
+
+    <option
+        gravity="0 0 -9.80513"
+        timestep="0.0002"
+        integrator="RK4"/>
+
+    <asset>
+
+        <!-- ================================================= -->
+        <!-- VISUAL ENVIRONMENT                                -->
+        <!-- ================================================= -->
+
+        <texture
+            name="sky"
+            type="skybox"
+            builtin="gradient"
+            rgb1="0.2 0.3 0.5"
+            rgb2="0 0 0"
+            width="512"
+            height="512"/>
+
+        <material
+            name="ground"
+            rgba="0.8 0.8 0.8 1"/>
+
+
+        <!-- ================================================= -->
+        <!-- BASE / LOWER DISC                                 -->
+        <!-- ================================================= -->
+
+        <mesh
+            name="base_mesh"
+            file="meshes/baseA1_binary.STL"
+            scale="0.001 0.001 0.001"/>
+
+        <mesh
+            name="end_mesh"
+            file="meshes/endA1_binary.STL"
+            scale="0.001 0.001 0.001"/>
+
+
+        <!-- ================================================= -->
+        <!-- FIXED CAD SECTION / SEGMENT 0                     -->
+        <!-- ================================================= -->
+
+        <mesh
+            name="fixed_border_0"
+            file="meshes/segmented_corrected/borderA1_binary_seg0.stl"
+            scale="0.001 0.001 0.001"/>
+
+        <mesh
+            name="fixed_chambers_0"
+            file="meshes/segmented_corrected/chambersA1_binary_seg0.stl"
+            scale="0.001 0.001 0.001"/>
+
+        <mesh
+            name="fixed_cavity1_0"
+            file="meshes/segmented_corrected/cavityA1_binary_seg0.stl"
+            scale="0.001 0.001 0.001"/>
+
+        <mesh
+            name="fixed_cavity2_0"
+            file="meshes/segmented_corrected/cavityA2_binary_seg0.stl"
+            scale="0.001 0.001 0.001"/>
+
+        <mesh
+            name="fixed_cavity3_0"
+            file="meshes/segmented_corrected/cavityA3_binary_seg0.stl"
+            scale="0.001 0.001 0.001"/>
+
+
+        <!-- ================================================= -->
+        <!-- SEGMENT 1                                         -->
+        <!-- ================================================= -->
+
+        <mesh
+            name="border_1"
+            file="meshes/segmented_corrected/borderA1_binary_seg1.stl"
+            scale="0.001 0.001 0.001"/>
+
+        <mesh
+            name="chambers_1"
+            file="meshes/segmented_corrected/chambersA1_binary_seg1.stl"
+            scale="0.001 0.001 0.001"/>
+
+        <mesh
+            name="cavity1_1"
+            file="meshes/segmented_corrected/cavityA1_binary_seg1.stl"
+            scale="0.001 0.001 0.001"/>
+
+        <mesh
+            name="cavity2_1"
+            file="meshes/segmented_corrected/cavityA2_binary_seg1.stl"
+            scale="0.001 0.001 0.001"/>
+
+        <mesh
+            name="cavity3_1"
+            file="meshes/segmented_corrected/cavityA3_binary_seg1.stl"
+            scale="0.001 0.001 0.001"/>
+
+
+        <!-- ================================================= -->
+        <!-- SEGMENT 2                                         -->
+        <!-- ================================================= -->
+
+        <mesh
+            name="border_2"
+            file="meshes/segmented_corrected/borderA1_binary_seg2.stl"
+            scale="0.001 0.001 0.001"/>
+
+        <mesh
+            name="chambers_2"
+            file="meshes/segmented_corrected/chambersA1_binary_seg2.stl"
+            scale="0.001 0.001 0.001"/>
+
+        <mesh
+            name="cavity1_2"
+            file="meshes/segmented_corrected/cavityA1_binary_seg2.stl"
+            scale="0.001 0.001 0.001"/>
+
+        <mesh
+            name="cavity2_2"
+            file="meshes/segmented_corrected/cavityA2_binary_seg2.stl"
+            scale="0.001 0.001 0.001"/>
+
+        <mesh
+            name="cavity3_2"
+            file="meshes/segmented_corrected/cavityA3_binary_seg2.stl"
+            scale="0.001 0.001 0.001"/>
+
+
+        <!-- ================================================= -->
+        <!-- SEGMENT 3                                         -->
+        <!-- ================================================= -->
+
+        <mesh
+            name="border_3"
+            file="meshes/segmented_corrected/borderA1_binary_seg3.stl"
+            scale="0.001 0.001 0.001"/>
+
+        <mesh
+            name="chambers_3"
+            file="meshes/segmented_corrected/chambersA1_binary_seg3.stl"
+            scale="0.001 0.001 0.001"/>
+
+        <mesh
+            name="cavity1_3"
+            file="meshes/segmented_corrected/cavityA1_binary_seg3.stl"
+            scale="0.001 0.001 0.001"/>
+
+        <mesh
+            name="cavity2_3"
+            file="meshes/segmented_corrected/cavityA2_binary_seg3.stl"
+            scale="0.001 0.001 0.001"/>
+
+        <mesh
+            name="cavity3_3"
+            file="meshes/segmented_corrected/cavityA3_binary_seg3.stl"
+            scale="0.001 0.001 0.001"/>
+
+
+        <!-- ================================================= -->
+        <!-- SEGMENT 4                                         -->
+        <!-- ================================================= -->
+
+        <mesh
+            name="border_4"
+            file="meshes/segmented_corrected/borderA1_binary_seg4.stl"
+            scale="0.001 0.001 0.001"/>
+
+        <mesh
+            name="chambers_4"
+            file="meshes/segmented_corrected/chambersA1_binary_seg4.stl"
+            scale="0.001 0.001 0.001"/>
+
+        <mesh
+            name="cavity1_4"
+            file="meshes/segmented_corrected/cavityA1_binary_seg4.stl"
+            scale="0.001 0.001 0.001"/>
+
+        <mesh
+            name="cavity2_4"
+            file="meshes/segmented_corrected/cavityA2_binary_seg4.stl"
+            scale="0.001 0.001 0.001"/>
+
+        <mesh
+            name="cavity3_4"
+            file="meshes/segmented_corrected/cavityA3_binary_seg4.stl"
+            scale="0.001 0.001 0.001"/>
+
+
+        <!-- ================================================= -->
+        <!-- SEGMENT 5                                         -->
+        <!-- ================================================= -->
+
+        <mesh
+            name="border_5"
+            file="meshes/segmented_corrected/borderA1_binary_seg5.stl"
+            scale="0.001 0.001 0.001"/>
+
+        <mesh
+            name="chambers_5"
+            file="meshes/segmented_corrected/chambersA1_binary_seg5.stl"
+            scale="0.001 0.001 0.001"/>
+
+        <mesh
+            name="cavity1_5"
+            file="meshes/segmented_corrected/cavityA1_binary_seg5.stl"
+            scale="0.001 0.001 0.001"/>
+
+        <mesh
+            name="cavity2_5"
+            file="meshes/segmented_corrected/cavityA2_binary_seg5.stl"
+            scale="0.001 0.001 0.001"/>
+
+        <mesh
+            name="cavity3_5"
+            file="meshes/segmented_corrected/cavityA3_binary_seg5.stl"
+            scale="0.001 0.001 0.001"/>
+
+    </asset>
+
+
+    <!-- ===================================================== -->
+    <!-- WORLD                                                 -->
+    <!-- ===================================================== -->
+
+    <worldbody>
+
+        <!-- Invisible XML target. main.py controls the green target. -->
+        <site
+            name="target_site"
+            type="sphere"
+            pos="0.10 0 0.15"
+            size="0.01"
+            rgba="0 1 0 0"/>
+
+
+        <!-- Ground -->
+        <geom
+            name="floor"
+            type="plane"
+            size="2 2 0.1"
+            material="ground"/>
+
+
+        <!-- Lighting -->
+        <light
+            name="main_light"
+            pos="0 0 1.5"
+            dir="0 0 -1"/>
+
+
+        <!-- Camera -->
+        <camera
+            name="rgb_camera"
+            pos="0.35 -0.35 0.25"
+            xyaxes="0.707 0.707 0
+                    -0.408 0.408 0.816"/>
+
+
+        <!-- ================================================= -->
+        <!-- ROBOT BASE                                        -->
+        <!-- ================================================= -->
+
+        <body
+            name="robot_base"
+            pos="0 0 0">
+
+            <!-- Lower/base disc -->
+            <geom
+                name="base"
+                type="mesh"
+                mesh="base_mesh"
+                contype="0"
+                conaffinity="0"
+                density="0"
+                rgba="0.8 0.8 0.8 1"/>
+
+
+            <!-- ================================================= -->
+            <!-- FIXED LOWER CAD SECTION                            -->
+            <!-- ================================================= -->
+
+            <geom
+                name="fixed_border_0"
+                type="mesh"
+                mesh="fixed_border_0"
+                contype="0"
+                conaffinity="0"
+                density="0"
+                rgba="0.8 0.8 0.8 1"/>
+
+            <geom
+                name="fixed_chambers_0"
+                type="mesh"
+                mesh="fixed_chambers_0"
+                contype="0"
+                conaffinity="0"
+                density="0"
+                rgba="0.8 0.8 0.8 1"/>
+
+            <geom
+                name="fixed_cavity1_0"
+                type="mesh"
+                mesh="fixed_cavity1_0"
+                contype="0"
+                conaffinity="0"
+                density="0"
+                rgba="1 0 0 0.5"/>
+
+            <geom
+                name="fixed_cavity2_0"
+                type="mesh"
+                mesh="fixed_cavity2_0"
+                contype="0"
+                conaffinity="0"
+                density="0"
+                rgba="0 1 0 0.5"/>
+
+            <geom
+                name="fixed_cavity3_0"
+                type="mesh"
+                mesh="fixed_cavity3_0"
+                contype="0"
+                conaffinity="0"
+                density="0"
+                rgba="0 0 1 0.5"/>
+
+
+            <!-- ================================================= -->
+            <!-- SEGMENT 1                                         -->
+            <!-- ================================================= -->
+
+            <body
+                name="segment_1"
+                pos="0 0 0.024">
+
+                <joint
+                    name="bend_x_1"
+                    type="hinge"
+                    axis="1 0 0"
+                    limited="true"
+                    range="-45 45"/>
+
+                <joint
+                    name="bend_y_1"
+                    type="hinge"
+                    axis="0 1 0"
+                    limited="true"
+                    range="-45 45"/>
+
+                <joint
+                    name="extension_1"
+                    type="slide"
+                    axis="0 0 1"
+                    limited="true"
+                    range="0 0.015"/>
+
+
+                <geom
+                    name="link_1"
+                    type="capsule"
+                    fromto="0 0 0 0 0 0.024"
+                    size="0.030"
+                    mass="0.034"
+                    contype="0"
+                    conaffinity="0"
+                    rgba="0.15 0.45 1 0.28"/>
+
+                <geom
+                    type="mesh"
+                    mesh="border_1"
+                    contype="0"
+                    conaffinity="0"
+                    density="0"
+                    rgba="0.8 0.8 0.8 1"/>
+
+                <geom
+                    type="mesh"
+                    mesh="chambers_1"
+                    contype="0"
+                    conaffinity="0"
+                    density="0"
+                    rgba="0.8 0.8 0.8 1"/>
+
+                <geom
+                    type="mesh"
+                    mesh="cavity1_1"
+                    contype="0"
+                    conaffinity="0"
+                    density="0"
+                    rgba="1 0 0 0.5"/>
+
+                <geom
+                    type="mesh"
+                    mesh="cavity2_1"
+                    contype="0"
+                    conaffinity="0"
+                    density="0"
+                    rgba="0 1 0 0.5"/>
+
+                <geom
+                    type="mesh"
+                    mesh="cavity3_1"
+                    contype="0"
+                    conaffinity="0"
+                    density="0"
+                    rgba="0 0 1 0.5"/>
+
+
+                <!-- ================================================= -->
+                <!-- SEGMENT 2                                         -->
+                <!-- ================================================= -->
+
+                <body
+                    name="segment_2"
+                    pos="0 0 0.024">
+
+                    <joint
+                        name="bend_x_2"
+                        type="hinge"
+                        axis="1 0 0"
+                        limited="true"
+                        range="-45 45"/>
+
+                    <joint
+                        name="bend_y_2"
+                        type="hinge"
+                        axis="0 1 0"
+                        limited="true"
+                        range="-45 45"/>
+
+                    <joint
+                        name="extension_2"
+                        type="slide"
+                        axis="0 0 1"
+                        limited="true"
+                        range="0 0.015"/>
+
+
+                    <geom
+                        name="link_2"
+                        type="capsule"
+                        fromto="0 0 0 0 0 0.024"
+                        size="0.030"
+                        mass="0.034"
+                        contype="0"
+                        conaffinity="0"
+                        rgba="0.15 0.45 1 0.28"/>
+
+                    <geom
+                        type="mesh"
+                        mesh="border_2"
+                        contype="0"
+                        conaffinity="0"
+                        density="0"
+                        rgba="0.8 0.8 0.8 1"/>
+
+                    <geom
+                        type="mesh"
+                        mesh="chambers_2"
+                        contype="0"
+                        conaffinity="0"
+                        density="0"
+                        rgba="0.8 0.8 0.8 1"/>
+
+                    <geom
+                        type="mesh"
+                        mesh="cavity1_2"
+                        contype="0"
+                        conaffinity="0"
+                        density="0"
+                        rgba="1 0 0 0.5"/>
+
+                    <geom
+                        type="mesh"
+                        mesh="cavity2_2"
+                        contype="0"
+                        conaffinity="0"
+                        density="0"
+                        rgba="0 1 0 0.5"/>
+
+                    <geom
+                        type="mesh"
+                        mesh="cavity3_2"
+                        contype="0"
+                        conaffinity="0"
+                        density="0"
+                        rgba="0 0 1 0.5"/>
+
+
+                    <!-- ================================================= -->
+                    <!-- SEGMENT 3                                         -->
+                    <!-- ================================================= -->
+
+                    <body
+                        name="segment_3"
+                        pos="0 0 0.024">
+
+                        <joint
+                            name="bend_x_3"
+                            type="hinge"
+                            axis="1 0 0"
+                            limited="true"
+                            range="-45 45"/>
+
+                        <joint
+                            name="bend_y_3"
+                            type="hinge"
+                            axis="0 1 0"
+                            limited="true"
+                            range="-45 45"/>
+
+                        <joint
+                            name="extension_3"
+                            type="slide"
+                            axis="0 0 1"
+                            limited="true"
+                            range="0 0.015"/>
+
+
+                        <geom
+                            name="link_3"
+                            type="capsule"
+                            fromto="0 0 0 0 0 0.024"
+                            size="0.030"
+                            mass="0.034"
+                            contype="0"
+                            conaffinity="0"
+                            rgba="0.15 0.45 1 0.28"/>
+
+                        <geom
+                            type="mesh"
+                            mesh="border_3"
+                            contype="0"
+                            conaffinity="0"
+                            density="0"
+                            rgba="0.8 0.8 0.8 1"/>
+
+                        <geom
+                            type="mesh"
+                            mesh="chambers_3"
+                            contype="0"
+                            conaffinity="0"
+                            density="0"
+                            rgba="0.8 0.8 0.8 1"/>
+
+                        <geom
+                            type="mesh"
+                            mesh="cavity1_3"
+                            contype="0"
+                            conaffinity="0"
+                            density="0"
+                            rgba="1 0 0 0.5"/>
+
+                        <geom
+                            type="mesh"
+                            mesh="cavity2_3"
+                            contype="0"
+                            conaffinity="0"
+                            density="0"
+                            rgba="0 1 0 0.5"/>
+
+                        <geom
+                            type="mesh"
+                            mesh="cavity3_3"
+                            contype="0"
+                            conaffinity="0"
+                            density="0"
+                            rgba="0 0 1 0.5"/>
+
+
+                        <!-- ================================================= -->
+                        <!-- SEGMENT 4                                         -->
+                        <!-- ================================================= -->
+
+                        <body
+                            name="segment_4"
+                            pos="0 0 0.024">
+
+                            <joint
+                                name="bend_x_4"
+                                type="hinge"
+                                axis="1 0 0"
+                                limited="true"
+                                range="-45 45"/>
+
+                            <joint
+                                name="bend_y_4"
+                                type="hinge"
+                                axis="0 1 0"
+                                limited="true"
+                                range="-45 45"/>
+
+                            <joint
+                                name="extension_4"
+                                type="slide"
+                                axis="0 0 1"
+                                limited="true"
+                                range="0 0.015"/>
+
+
+                            <geom
+                                name="link_4"
+                                type="capsule"
+                                fromto="0 0 0 0 0 0.024"
+                                size="0.030"
+                                mass="0.034"
+                                contype="0"
+                                conaffinity="0"
+                                rgba="0.15 0.45 1 0.28"/>
+
+                            <geom
+                                type="mesh"
+                                mesh="border_4"
+                                contype="0"
+                                conaffinity="0"
+                                density="0"
+                                rgba="0.8 0.8 0.8 1"/>
+
+                            <geom
+                                type="mesh"
+                                mesh="chambers_4"
+                                contype="0"
+                                conaffinity="0"
+                                density="0"
+                                rgba="0.8 0.8 0.8 1"/>
+
+                            <geom
+                                type="mesh"
+                                mesh="cavity1_4"
+                                contype="0"
+                                conaffinity="0"
+                                density="0"
+                                rgba="1 0 0 0.5"/>
+
+                            <geom
+                                type="mesh"
+                                mesh="cavity2_4"
+                                contype="0"
+                                conaffinity="0"
+                                density="0"
+                                rgba="0 1 0 0.5"/>
+
+                            <geom
+                                type="mesh"
+                                mesh="cavity3_4"
+                                contype="0"
+                                conaffinity="0"
+                                density="0"
+                                rgba="0 0 1 0.5"/>
+
+
+                            <!-- ================================================= -->
+                            <!-- SEGMENT 5                                         -->
+                            <!-- ================================================= -->
+
+                            <body
+                                name="segment_5"
+                                pos="0 0 0.024">
+
+                                <joint
+                                    name="bend_x_5"
+                                    type="hinge"
+                                    axis="1 0 0"
+                                    limited="true"
+                                    range="-45 45"/>
+
+                                <joint
+                                    name="bend_y_5"
+                                    type="hinge"
+                                    axis="0 1 0"
+                                    limited="true"
+                                    range="-45 45"/>
+
+                                <joint
+                                    name="extension_5"
+                                    type="slide"
+                                    axis="0 0 1"
+                                    limited="true"
+                                    range="0 0.015"/>
+
+
+                                <geom
+                                    name="link_5"
+                                    type="capsule"
+                                    fromto="0 0 0 0 0 0.024"
+                                    size="0.030"
+                                    mass="0.034"
+                                    contype="0"
+                                    conaffinity="0"
+                                    rgba="0.15 0.45 1 0.28"/>
+
+                                <geom
+                                    type="mesh"
+                                    mesh="border_5"
+                                    contype="0"
+                                    conaffinity="0"
+                                    density="0"
+                                    rgba="0.8 0.8 0.8 1"/>
+
+                                <geom
+                                    type="mesh"
+                                    mesh="chambers_5"
+                                    contype="0"
+                                    conaffinity="0"
+                                    density="0"
+                                    rgba="0.8 0.8 0.8 1"/>
+
+                                <geom
+                                    type="mesh"
+                                    mesh="cavity1_5"
+                                    contype="0"
+                                    conaffinity="0"
+                                    density="0"
+                                    rgba="1 0 0 0.5"/>
+
+                                <geom
+                                    type="mesh"
+                                    mesh="cavity2_5"
+                                    contype="0"
+                                    conaffinity="0"
+                                    density="0"
+                                    rgba="0 1 0 0.5"/>
+
+                                <geom
+                                    type="mesh"
+                                    mesh="cavity3_5"
+                                    contype="0"
+                                    conaffinity="0"
+                                    density="0"
+                                    rgba="0 0 1 0.5"/>
+
+
+                                <!-- ================================================= -->
+                                <!-- UPPER / END DISC                                  -->
+                                <!-- ================================================= -->
+
+                                <geom
+                                    name="end_disc"
+                                    type="mesh"
+                                    mesh="end_mesh"
+                                    pos="0 0 -0.14921000671"
+                                    contype="0"
+                                    conaffinity="0"
+                                    density="0"
+                                    rgba="0.8 0.8 0.8 1"/>
+
+
+                                <!-- End-effector reference -->
+                                <site
+                                    name="end_effector"
+                                    pos="0 0 0.024"
+                                    size="0.005"
+                                    rgba="1 0 0 1"/>
+
+                            </body>
+
+                        </body>
+
+                    </body>
+
+                </body>
+
+            </body>
+
+        </body>
+
+    </worldbody>
+
+
+    <!-- ===================================================== -->
+    <!-- 15 POSITION ACTUATORS                                 -->
+    <!-- ===================================================== -->
+
+    <actuator>
+
+        <position
+            joint="bend_x_1"
+            kp="50"/>
+
+        <position
+            joint="bend_y_1"
+            kp="50"/>
+
+        <position
+            joint="extension_1"
+            kp="1000"/>
+
+
+        <position
+            joint="bend_x_2"
+            kp="50"/>
+
+        <position
+            joint="bend_y_2"
+            kp="50"/>
+
+        <position
+            joint="extension_2"
+            kp="1000"/>
+
+
+        <position
+            joint="bend_x_3"
+            kp="50"/>
+
+        <position
+            joint="bend_y_3"
+            kp="50"/>
+
+        <position
+            joint="extension_3"
+            kp="1000"/>
+
+
+        <position
+            joint="bend_x_4"
+            kp="50"/>
+
+        <position
+            joint="bend_y_4"
+            kp="50"/>
+
+        <position
+            joint="extension_4"
+            kp="1000"/>
+
+
+        <position
+            joint="bend_x_5"
+            kp="50"/>
+
+        <position
+            joint="bend_y_5"
+            kp="50"/>
+
+        <position
+            joint="extension_5"
+            kp="1000"/>
+
+    </actuator>
+
+</mujoco>
