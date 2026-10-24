@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Two-module I-Support robot HANGING from a ceiling mount,
+    with a PneuNet-style soft gripper and a BOWL sunk into the
+    table: pick the NAMED object up and drop it in.
+    Five objects (cube, apple, banana, ball, can); one is on the
+    table, the rest are parked off camera.
+    30 arm actuators (6 pressures) + 12 finger actuators (1 pressure).
+
+    GENERATED FILE - edit build_continual_scene.py and re-run.
+-->
+<mujoco model="i_support_2module_continual">
+    <compiler angle="degree" inertiafromgeom="true" meshdir="sim/meshes" />
+    <option gravity="0 0 -9.80513" timestep="0.0002" integrator="RK4" cone="elliptic" impratio="10" />
+    <asset>
+        <texture name="sky" type="skybox" builtin="gradient" rgb1="0.2 0.3 0.5" rgb2="0 0 0" width="512" height="512" />
+        <material name="ground" rgba="0.8 0.8 0.8 1" />
+        <mesh name="base_mesh" file="baseA1_binary.STL" scale="0.001 0.001 0.001" />
+        <mesh name="end_mesh" file="endA1_binary.STL" scale="0.001 0.001 0.001" />
+        <mesh name="fixed_border_0" file="segmented_corrected/borderA1_binary_seg0.stl" scale="0.001 0.001 0.001" />
+        <mesh name="fixed_chambers_0" file="segmented_corrected/chambersA1_binary_seg0.stl" scale="0.001 0.001 0.001" />
+        <mesh name="fixed_cavity1_0" file="segmented_corrected/cavityA1_binary_seg0.stl" scale="0.001 0.001 0.001" />
+        <mesh name="fixed_cavity2_0" file="segmented_corrected/cavityA2_binary_seg0.stl" scale="0.001 0.001 0.001" />
+        <mesh name="fixed_cavity3_0" file="segmented_corrected/cavityA3_binary_seg0.stl" scale="0.001 0.001 0.001" />
+        <mesh name="border_1" file="segmented_corrected/borderA1_binary_seg1.stl" scale="0.001 0.001 0.001" />
+        <mesh name="chambers_1" file="segmented_corrected/chambersA1_binary_seg1.stl" scale="0.001 0.001 0.001" />
+        <mesh name="cavity1_1" file="segmented_corrected/cavityA1_binary_seg1.stl" scale="0.001 0.001 0.001" />
+        <mesh name="cavity2_1" file="segmented_corrected/cavityA2_binary_seg1.stl" scale="0.001 0.001 0.001" />
+        <mesh name="cavity3_1" file="segmented_corrected/cavityA3_binary_seg1.stl" scale="0.001 0.001 0.001" />
+        <mesh name="border_2" file="segmented_corrected/borderA1_binary_seg2.stl" scale="0.001 0.001 0.001" />
+        <mesh name="chambers_2" file="segmented_corrected/chambersA1_binary_seg2.stl" scale="0.001 0.001 0.001" />
+        <mesh name="cavity1_2" file="segmented_corrected/cavityA1_binary_seg2.stl" scale="0.001 0.001 0.001" />
+        <mesh name="cavity2_2" file="segmented_corrected/cavityA2_binary_seg2.stl" scale="0.001 0.001 0.001" />
+        <mesh name="cavity3_2" file="segmented_corrected/cavityA3_binary_seg2.stl" scale="0.001 0.001 0.001" />
+        <mesh name="border_3" file="segmented_corrected/borderA1_binary_seg3.stl" scale="0.001 0.001 0.001" />
+        <mesh name="chambers_3" file="segmented_corrected/chambersA1_binary_seg3.stl" scale="0.001 0.001 0.001" />
+        <mesh name="cavity1_3" file="segmented_corrected/cavityA1_binary_seg3.stl" scale="0.001 0.001 0.001" />
+        <mesh name="cavity2_3" file="segmented_corrected/cavityA2_binary_seg3.stl" scale="0.001 0.001 0.001" />
+        <mesh name="cavity3_3" file="segmented_corrected/cavityA3_binary_seg3.stl" scale="0.001 0.001 0.001" />
+        <mesh name="border_4" file="segmented_corrected/borderA1_binary_seg4.stl" scale="0.001 0.001 0.001" />
+        <mesh name="chambers_4" file="segmented_corrected/chambersA1_binary_seg4.stl" scale="0.001 0.001 0.001" />
+        <mesh name="cavity1_4" file="segmented_corrected/cavityA1_binary_seg4.stl" scale="0.001 0.001 0.001" />
+        <mesh name="cavity2_4" file="segmented_corrected/cavityA2_binary_seg4.stl" scale="0.001 0.001 0.001" />
+        <mesh name="cavity3_4" file="segmented_corrected/cavityA3_binary_seg4.stl" scale="0.001 0.001 0.001" />
+        <mesh name="border_5" file="segmented_corrected/borderA1_binary_seg5.stl" scale="0.001 0.001 0.001" />
+        <mesh name="chambers_5" file="segmented_corrected/chambersA1_binary_seg5.stl" scale="0.001 0.001 0.001" />
+        <mesh name="cavity1_5" file="segmented_corrected/cavityA1_binary_seg5.stl" scale="0.001 0.001 0.001" />
+        <mesh name="cavity2_5" file="segmented_corrected/cavityA2_binary_seg5.stl" scale="0.001 0.001 0.001" />
+        <mesh name="cavity3_5" file="segmented_corrected/cavityA3_binary_seg5.stl" scale="0.001 0.001 0.001" />
+    </asset>
+    <worldbody>
+        <site name="target_site" type="sphere" pos="0.10 0 0.30" size="0.01" rgba="0 1 0 0" />
+        <geom name="floor" type="plane" size="2 2 0.1" material="ground" />
+        <light name="main_light" pos="0 0 2.0" dir="0 0 -1" />
+        <camera name="rgb_camera" pos="0.45 -0.45 0.32" xyaxes="0.707 0.707 0  -0.408 0.408 0.816" />
+        <body name="robot_base" pos="0 0 0.8" quat="0 1 0 0">
+            <geom name="base" type="mesh" mesh="base_mesh" contype="0" conaffinity="0" density="0" rgba="0.8 0.8 0.8 1" />
+            <geom name="fixed_border_0" type="mesh" mesh="fixed_border_0" contype="0" conaffinity="0" density="0" rgba="0.8 0.8 0.8 1" />
+            <geom name="fixed_chambers_0" type="mesh" mesh="fixed_chambers_0" contype="0" conaffinity="0" density="0" rgba="0.8 0.8 0.8 1" />
+            <geom name="fixed_cavity1_0" type="mesh" mesh="fixed_cavity1_0" contype="0" conaffinity="0" density="0" rgba="1 0 0 0.5" />
+            <geom name="fixed_cavity2_0" type="mesh" mesh="fixed_cavity2_0" contype="0" conaffinity="0" density="0" rgba="0 1 0 0.5" />
+            <geom name="fixed_cavity3_0" type="mesh" mesh="fixed_cavity3_0" contype="0" conaffinity="0" density="0" rgba="0 0 1 0.5" />
+            <body name="segment_1" pos="0 0 0.024">
+                <joint name="bend_x_1" type="hinge" axis="1 0 0" limited="true" range="-45 45" />
+                <joint name="bend_y_1" type="hinge" axis="0 1 0" limited="true" range="-45 45" />
+                <joint name="extension_1" type="slide" axis="0 0 1" limited="true" range="0 0.015" />
+                <geom name="link_1" type="capsule" fromto="0 0 0 0 0 0.024" size="0.03" mass="0.034" contype="0" conaffinity="0" rgba="0.15 0.45 1 0.28" />
+                <geom type="mesh" mesh="border_1" contype="0" conaffinity="0" density="0" rgba="0.8 0.8 0.8 1" />
+                <geom type="mesh" mesh="chambers_1" contype="0" conaffinity="0" density="0" rgba="0.8 0.8 0.8 1" />
+                <geom type="mesh" mesh="cavity1_1" contype="0" conaffinity="0" density="0" rgba="1 0 0 0.5" />
+                <geom type="mesh" mesh="cavity2_1" contype="0" conaffinity="0" density="0" rgba="0 1 0 0.5" />
+                <geom type="mesh" mesh="cavity3_1" contype="0" conaffinity="0" density="0" rgba="0 0 1 0.5" />
+                <body name="segment_2" pos="0 0 0.024">
+                    <joint name="bend_x_2" type="hinge" axis="1 0 0" limited="true" range="-45 45" />
+                    <joint name="bend_y_2" type="hinge" axis="0 1 0" limited="true" range="-45 45" />
+                    <joint name="extension_2" type="slide" axis="0 0 1" limited="true" range="0 0.015" />
+                    <geom name="link_2" type="capsule" fromto="0 0 0 0 0 0.024" size="0.03" mass="0.034" contype="0" conaffinity="0" rgba="0.15 0.45 1 0.28" />
+                    <geom type="mesh" mesh="border_2" contype="0" conaffinity="0" density="0" rgba="0.8 0.8 0.8 1" />
+                    <geom type="mesh" mesh="chambers_2" contype="0" conaffinity="0" density="0" rgba="0.8 0.8 0.8 1" />
+                    <geom type="mesh" mesh="cavity1_2" contype="0" conaffinity="0" density="0" rgba="1 0 0 0.5" />
+                    <geom type="mesh" mesh="cavity2_2" contype="0" conaffinity="0" density="0" rgba="0 1 0 0.5" />
+                    <geom type="mesh" mesh="cavity3_2" contype="0" conaffinity="0" density="0" rgba="0 0 1 0.5" />
+                    <body name="segment_3" pos="0 0 0.024">
+                        <joint name="bend_x_3" type="hinge" axis="1 0 0" limited="true" range="-45 45" />
+                        <joint name="bend_y_3" type="hinge" axis="0 1 0" limited="true" range="-45 45" />
+                        <joint name="extension_3" type="slide" axis="0 0 1" limited="true" range="0 0.015" />
+                        <geom name="link_3" type="capsule" fromto="0 0 0 0 0 0.024" size="0.03" mass="0.034" contype="0" conaffinity="0" rgba="0.15 0.45 1 0.28" />
+                        <geom type="mesh" mesh="border_3" contype="0" conaffinity="0" density="0" rgba="0.8 0.8 0.8 1" />
+                        <geom type="mesh" mesh="chambers_3" contype="0" conaffinity="0" density="0" rgba="0.8 0.8 0.8 1" />
+                        <geom type="mesh" mesh="cavity1_3" contype="0" conaffinity="0" density="0" rgba="1 0 0 0.5" />
+                        <geom type="mesh" mesh="cavity2_3" contype="0" conaffinity="0" density="0" rgba="0 1 0 0.5" />
+                        <geom type="mesh" mesh="cavity3_3" contype="0" conaffinity="0" density="0" rgba="0 0 1 0.5" />
+                        <body name="segment_4" pos="0 0 0.024">
+                            <joint name="bend_x_4" type="hinge" axis="1 0 0" limited="true" range="-45 45" />
+                            <joint name="bend_y_4" type="hinge" axis="0 1 0" limited="true" range="-45 45" />
+                            <joint name="extension_4" type="slide" axis="0 0 1" limited="true" range="0 0.015" />
+                            <geom name="link_4" type="capsule" fromto="0 0 0 0 0 0.024" size="0.03" mass="0.034" contype="0" conaffinity="0" rgba="0.15 0.45 1 0.28" />
+                            <geom type="mesh" mesh="border_4" contype="0" conaffinity="0" density="0" rgba="0.8 0.8 0.8 1" />
+                            <geom type="mesh" mesh="chambers_4" contype="0" conaffinity="0" density="0" rgba="0.8 0.8 0.8 1" />
+                            <geom type="mesh" mesh="cavity1_4" contype="0" conaffinity="0" density="0" rgba="1 0 0 0.5" />
+                            <geom type="mesh" mesh="cavity2_4" contype="0" conaffinity="0" density="0" rgba="0 1 0 0.5" />
+                            <geom type="mesh" mesh="cavity3_4" contype="0" conaffinity="0" density="0" rgba="0 0 1 0.5" />
+                            <body name="segment_5" pos="0 0 0.024">
+                                <joint name="bend_x_5" type="hinge" axis="1 0 0" limited="true" range="-45 45" />
+                                <joint name="bend_y_5" type="hinge" axis="0 1 0" limited="true" range="-45 45" />
+                                <joint name="extension_5" type="slide" axis="0 0 1" limited="true" range="0 0.015" />
+                                <geom name="link_5" type="capsule" fromto="0 0 0 0 0 0.024" size="0.03" mass="0.034" contype="0" conaffinity="0" rgba="0.15 0.45 1 0.28" />
+                                <geom type="mesh" mesh="border_5" contype="0" conaffinity="0" density="0" rgba="0.8 0.8 0.8 1" />
+                                <geom type="mesh" mesh="chambers_5" contype="0" conaffinity="0" density="0" rgba="0.8 0.8 0.8 1" />
+                                <geom type="mesh" mesh="cavity1_5" contype="0" conaffinity="0" density="0" rgba="1 0 0 0.5" />
+                                <geom type="mesh" mesh="cavity2_5" contype="0" conaffinity="0" density="0" rgba="0 1 0 0.5" />
+                                <geom type="mesh" mesh="cavity3_5" contype="0" conaffinity="0" density="0" rgba="0 0 1 0.5" />
+                                <geom name="interface_disc" type="mesh" mesh="end_mesh" pos="0 0 -0.14921000671" contype="0" conaffinity="0" density="0" rgba="0.8 0.8 0.8 1" />
+                                <body name="segment_6" pos="0 0 0.024">
+                                    <joint name="bend_x_6" type="hinge" axis="1 0 0" limited="true" range="-45 45" />
+                                    <joint name="bend_y_6" type="hinge" axis="0 1 0" limited="true" range="-45 45" />
+                                    <joint name="extension_6" type="slide" axis="0 0 1" limited="true" range="0 0.015" />
+                                    <geom name="link_6" type="capsule" fromto="0 0 0 0 0 0.024" size="0.03" mass="0.034" contype="0" conaffinity="0" rgba="0.15 0.45 1 0.28" />
+                                    <geom type="mesh" mesh="border_1" contype="0" conaffinity="0" density="0" rgba="0.8 0.8 0.8 1" />
+                                    <geom type="mesh" mesh="chambers_1" contype="0" conaffinity="0" density="0" rgba="0.8 0.8 0.8 1" />
+                                    <geom type="mesh" mesh="cavity1_1" contype="0" conaffinity="0" density="0" rgba="1 0 0 0.5" />
+                                    <geom type="mesh" mesh="cavity2_1" contype="0" conaffinity="0" density="0" rgba="0 1 0 0.5" />
+                                    <geom type="mesh" mesh="cavity3_1" contype="0" conaffinity="0" density="0" rgba="0 0 1 0.5" />
+                                    <body name="segment_7" pos="0 0 0.024">
+                                        <joint name="bend_x_7" type="hinge" axis="1 0 0" limited="true" range="-45 45" />
+                                        <joint name="bend_y_7" type="hinge" axis="0 1 0" limited="true" range="-45 45" />
+                                        <joint name="extension_7" type="slide" axis="0 0 1" limited="true" range="0 0.015" />
+                                        <geom name="link_7" type="capsule" fromto="0 0 0 0 0 0.024" size="0.03" mass="0.034" contype="0" conaffinity="0" rgba="0.15 0.45 1 0.28" />
+                                        <geom type="mesh" mesh="border_2" contype="0" conaffinity="0" density="0" rgba="0.8 0.8 0.8 1" />
+                                        <geom type="mesh" mesh="chambers_2" contype="0" conaffinity="0" density="0" rgba="0.8 0.8 0.8 1" />
+                                        <geom type="mesh" mesh="cavity1_2" contype="0" conaffinity="0" density="0" rgba="1 0 0 0.5" />
+                                        <geom type="mesh" mesh="cavity2_2" contype="0" conaffinity="0" density="0" rgba="0 1 0 0.5" />
+                                        <geom type="mesh" mesh="cavity3_2" contype="0" conaffinity="0" density="0" rgba="0 0 1 0.5" />
+                                        <body name="segment_8" pos="0 0 0.024">
+                                            <joint name="bend_x_8" type="hinge" axis="1 0 0" limited="true" range="-45 45" />
+                                            <joint name="bend_y_8" type="hinge" axis="0 1 0" limited="true" range="-45 45" />
+                                            <joint name="extension_8" type="slide" axis="0 0 1" limited="true" range="0 0.015" />
+                                            <geom name="link_8" type="capsule" fromto="0 0 0 0 0 0.024" size="0.03" mass="0.034" contype="0" conaffinity="0" rgba="0.15 0.45 1 0.28" />
+                                            <geom type="mesh" mesh="border_3" contype="0" conaffinity="0" density="0" rgba="0.8 0.8 0.8 1" />
+                                            <geom type="mesh" mesh="chambers_3" contype="0" conaffinity="0" density="0" rgba="0.8 0.8 0.8 1" />
+                                            <geom type="mesh" mesh="cavity1_3" contype="0" conaffinity="0" density="0" rgba="1 0 0 0.5" />
+                                            <geom type="mesh" mesh="cavity2_3" contype="0" conaffinity="0" density="0" rgba="0 1 0 0.5" />
+                                            <geom type="mesh" mesh="cavity3_3" contype="0" conaffinity="0" density="0" rgba="0 0 1 0.5" />
+                                            <body name="segment_9" pos="0 0 0.024">
+                                                <joint name="bend_x_9" type="hinge" axis="1 0 0" limited="true" range="-45 45" />
+                                                <joint name="bend_y_9" type="hinge" axis="0 1 0" limited="true" range="-45 45" />
+                                                <joint name="extension_9" type="slide" axis="0 0 1" limited="true" range="0 0.015" />
+                                                <geom name="link_9" type="capsule" fromto="0 0 0 0 0 0.024" size="0.03" mass="0.034" contype="0" conaffinity="0" rgba="0.15 0.45 1 0.28" />
+                                                <geom type="mesh" mesh="border_4" contype="0" conaffinity="0" density="0" rgba="0.8 0.8 0.8 1" />
+                                                <geom type="mesh" mesh="chambers_4" contype="0" conaffinity="0" density="0" rgba="0.8 0.8 0.8 1" />
+                                                <geom type="mesh" mesh="cavity1_4" contype="0" conaffinity="0" density="0" rgba="1 0 0 0.5" />
+                                                <geom type="mesh" mesh="cavity2_4" contype="0" conaffinity="0" density="0" rgba="0 1 0 0.5" />
+                                                <geom type="mesh" mesh="cavity3_4" contype="0" conaffinity="0" density="0" rgba="0 0 1 0.5" />
+                                                <body name="segment_10" pos="0 0 0.024">
+                                                    <joint name="bend_x_10" type="hinge" axis="1 0 0" limited="true" range="-45 45" />
+                                                    <joint name="bend_y_10" type="hinge" axis="0 1 0" limited="true" range="-45 45" />
+                                                    <joint name="extension_10" type="slide" axis="0 0 1" limited="true" range="0 0.015" />
+                                                    <geom name="link_10" type="capsule" fromto="0 0 0 0 0 0.024" size="0.03" mass="0.034" contype="0" conaffinity="0" rgba="0.15 0.45 1 0.28" />
+                                                    <geom type="mesh" mesh="border_5" contype="0" conaffinity="0" density="0" rgba="0.8 0.8 0.8 1" />
+                                                    <geom type="mesh" mesh="chambers_5" contype="0" conaffinity="0" density="0" rgba="0.8 0.8 0.8 1" />
+                                                    <geom type="mesh" mesh="cavity1_5" contype="0" conaffinity="0" density="0" rgba="1 0 0 0.5" />
+                                                    <geom type="mesh" mesh="cavity2_5" contype="0" conaffinity="0" density="0" rgba="0 1 0 0.5" />
+                                                    <geom type="mesh" mesh="cavity3_5" contype="0" conaffinity="0" density="0" rgba="0 0 1 0.5" />
+                                                    <geom name="end_disc" type="mesh" mesh="end_mesh" pos="0 0 -0.14921000671" contype="0" conaffinity="0" density="0" rgba="0.8 0.8 0.8 1" />
+                                                    <site name="end_effector" pos="0 0 0.024" size="0.005" rgba="1 0 0 0" />
+                                                    <body name="gripper_palm" pos="0 0 0.024">
+                                                        <geom name="palm" type="cylinder" size="0.03 0.006" pos="0 0 0.006" mass="0.015" rgba="0.25 0.25 0.28 1" contype="1" conaffinity="1" friction="1.2 0.02 0.001" />
+                                                        <site name="tcp" type="sphere" size="0.004" pos="0 0 0.062" rgba="1 0.85 0.1 1" />
+                                                        <body name="finger0_seg0" pos="1.22465e-18 0.02 0.012" euler="0 0 90">
+                                                            <joint name="finger0_joint0" type="hinge" axis="0 1 0" limited="true" range="-45 20" damping="0.002" armature="0.0002" />
+                                                            <geom name="finger0_pad0" type="box" size="0.0045 0.008 0.00882" pos="0 0 0.009" mass="0.004" rgba="0.95 0.95 0.92 0.95" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" solref="0.02 1" solimp="0.9 0.97 0.001" />
+                                                            <geom type="box" size="0.004 0.0076 0.00558" pos="0.0085 0 0.009" rgba="0.85 0.35 0.25 0.9" contype="0" conaffinity="0" density="0" />
+                                                            <body name="finger0_seg1" pos="0 0 0.018">
+                                                                <joint name="finger0_joint1" type="hinge" axis="0 1 0" limited="true" range="-45 20" damping="0.002" armature="0.0002" />
+                                                                <geom name="finger0_pad1" type="box" size="0.0045 0.008 0.00882" pos="0 0 0.009" mass="0.004" rgba="0.95 0.95 0.92 0.95" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" solref="0.02 1" solimp="0.9 0.97 0.001" />
+                                                                <geom type="box" size="0.004 0.0076 0.00558" pos="0.0085 0 0.009" rgba="0.85 0.35 0.25 0.9" contype="0" conaffinity="0" density="0" />
+                                                                <body name="finger0_seg2" pos="0 0 0.018">
+                                                                    <joint name="finger0_joint2" type="hinge" axis="0 1 0" limited="true" range="-45 20" damping="0.002" armature="0.0002" />
+                                                                    <geom name="finger0_pad2" type="box" size="0.0045 0.008 0.00882" pos="0 0 0.009" mass="0.004" rgba="0.95 0.95 0.92 0.95" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" solref="0.02 1" solimp="0.9 0.97 0.001" />
+                                                                    <geom type="box" size="0.004 0.0076 0.00558" pos="0.0085 0 0.009" rgba="0.85 0.35 0.25 0.9" contype="0" conaffinity="0" density="0" />
+                                                                    <body name="finger0_seg3" pos="0 0 0.018">
+                                                                        <joint name="finger0_joint3" type="hinge" axis="0 1 0" limited="true" range="-45 20" damping="0.002" armature="0.0002" />
+                                                                        <geom name="finger0_pad3" type="box" size="0.0045 0.008 0.00882" pos="0 0 0.009" mass="0.004" rgba="0.95 0.95 0.92 0.95" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" solref="0.02 1" solimp="0.9 0.97 0.001" />
+                                                                        <geom type="box" size="0.004 0.0076 0.00558" pos="0.0085 0 0.009" rgba="0.85 0.35 0.25 0.9" contype="0" conaffinity="0" density="0" />
+                                                                        <geom name="finger0_tip" type="capsule" fromto="0 -0.0064 0.018 0 0.0064 0.018" size="0.0045" rgba="0.95 0.95 0.92 0.95" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" solref="0.02 1" solimp="0.9 0.97 0.001" density="0" />
+                                                                    </body>
+                                                                </body>
+                                                            </body>
+                                                        </body>
+                                                        <body name="finger1_seg0" pos="-0.0173205 -0.01 0.012" euler="0 0 210">
+                                                            <joint name="finger1_joint0" type="hinge" axis="0 1 0" limited="true" range="-45 20" damping="0.002" armature="0.0002" />
+                                                            <geom name="finger1_pad0" type="box" size="0.0045 0.008 0.00882" pos="0 0 0.009" mass="0.004" rgba="0.95 0.95 0.92 0.95" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" solref="0.02 1" solimp="0.9 0.97 0.001" />
+                                                            <geom type="box" size="0.004 0.0076 0.00558" pos="0.0085 0 0.009" rgba="0.85 0.35 0.25 0.9" contype="0" conaffinity="0" density="0" />
+                                                            <body name="finger1_seg1" pos="0 0 0.018">
+                                                                <joint name="finger1_joint1" type="hinge" axis="0 1 0" limited="true" range="-45 20" damping="0.002" armature="0.0002" />
+                                                                <geom name="finger1_pad1" type="box" size="0.0045 0.008 0.00882" pos="0 0 0.009" mass="0.004" rgba="0.95 0.95 0.92 0.95" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" solref="0.02 1" solimp="0.9 0.97 0.001" />
+                                                                <geom type="box" size="0.004 0.0076 0.00558" pos="0.0085 0 0.009" rgba="0.85 0.35 0.25 0.9" contype="0" conaffinity="0" density="0" />
+                                                                <body name="finger1_seg2" pos="0 0 0.018">
+                                                                    <joint name="finger1_joint2" type="hinge" axis="0 1 0" limited="true" range="-45 20" damping="0.002" armature="0.0002" />
+                                                                    <geom name="finger1_pad2" type="box" size="0.0045 0.008 0.00882" pos="0 0 0.009" mass="0.004" rgba="0.95 0.95 0.92 0.95" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" solref="0.02 1" solimp="0.9 0.97 0.001" />
+                                                                    <geom type="box" size="0.004 0.0076 0.00558" pos="0.0085 0 0.009" rgba="0.85 0.35 0.25 0.9" contype="0" conaffinity="0" density="0" />
+                                                                    <body name="finger1_seg3" pos="0 0 0.018">
+                                                                        <joint name="finger1_joint3" type="hinge" axis="0 1 0" limited="true" range="-45 20" damping="0.002" armature="0.0002" />
+                                                                        <geom name="finger1_pad3" type="box" size="0.0045 0.008 0.00882" pos="0 0 0.009" mass="0.004" rgba="0.95 0.95 0.92 0.95" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" solref="0.02 1" solimp="0.9 0.97 0.001" />
+                                                                        <geom type="box" size="0.004 0.0076 0.00558" pos="0.0085 0 0.009" rgba="0.85 0.35 0.25 0.9" contype="0" conaffinity="0" density="0" />
+                                                                        <geom name="finger1_tip" type="capsule" fromto="0 -0.0064 0.018 0 0.0064 0.018" size="0.0045" rgba="0.95 0.95 0.92 0.95" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" solref="0.02 1" solimp="0.9 0.97 0.001" density="0" />
+                                                                    </body>
+                                                                </body>
+                                                            </body>
+                                                        </body>
+                                                        <body name="finger2_seg0" pos="0.0173205 -0.01 0.012" euler="0 0 330">
+                                                            <joint name="finger2_joint0" type="hinge" axis="0 1 0" limited="true" range="-45 20" damping="0.002" armature="0.0002" />
+                                                            <geom name="finger2_pad0" type="box" size="0.0045 0.008 0.00882" pos="0 0 0.009" mass="0.004" rgba="0.95 0.95 0.92 0.95" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" solref="0.02 1" solimp="0.9 0.97 0.001" />
+                                                            <geom type="box" size="0.004 0.0076 0.00558" pos="0.0085 0 0.009" rgba="0.85 0.35 0.25 0.9" contype="0" conaffinity="0" density="0" />
+                                                            <body name="finger2_seg1" pos="0 0 0.018">
+                                                                <joint name="finger2_joint1" type="hinge" axis="0 1 0" limited="true" range="-45 20" damping="0.002" armature="0.0002" />
+                                                                <geom name="finger2_pad1" type="box" size="0.0045 0.008 0.00882" pos="0 0 0.009" mass="0.004" rgba="0.95 0.95 0.92 0.95" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" solref="0.02 1" solimp="0.9 0.97 0.001" />
+                                                                <geom type="box" size="0.004 0.0076 0.00558" pos="0.0085 0 0.009" rgba="0.85 0.35 0.25 0.9" contype="0" conaffinity="0" density="0" />
+                                                                <body name="finger2_seg2" pos="0 0 0.018">
+                                                                    <joint name="finger2_joint2" type="hinge" axis="0 1 0" limited="true" range="-45 20" damping="0.002" armature="0.0002" />
+                                                                    <geom name="finger2_pad2" type="box" size="0.0045 0.008 0.00882" pos="0 0 0.009" mass="0.004" rgba="0.95 0.95 0.92 0.95" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" solref="0.02 1" solimp="0.9 0.97 0.001" />
+                                                                    <geom type="box" size="0.004 0.0076 0.00558" pos="0.0085 0 0.009" rgba="0.85 0.35 0.25 0.9" contype="0" conaffinity="0" density="0" />
+                                                                    <body name="finger2_seg3" pos="0 0 0.018">
+                                                                        <joint name="finger2_joint3" type="hinge" axis="0 1 0" limited="true" range="-45 20" damping="0.002" armature="0.0002" />
+                                                                        <geom name="finger2_pad3" type="box" size="0.0045 0.008 0.00882" pos="0 0 0.009" mass="0.004" rgba="0.95 0.95 0.92 0.95" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" solref="0.02 1" solimp="0.9 0.97 0.001" />
+                                                                        <geom type="box" size="0.004 0.0076 0.00558" pos="0.0085 0 0.009" rgba="0.85 0.35 0.25 0.9" contype="0" conaffinity="0" density="0" />
+                                                                        <geom name="finger2_tip" type="capsule" fromto="0 -0.0064 0.018 0 0.0064 0.018" size="0.0045" rgba="0.95 0.95 0.92 0.95" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" solref="0.02 1" solimp="0.9 0.97 0.001" density="0" />
+                                                                    </body>
+                                                                </body>
+                                                            </body>
+                                                        </body>
+                                                        <camera name="wrist_camera" pos="0 0 0.013" xyaxes="1 0 0 0 -1 0" fovy="76.0" />
+                                                    </body>
+                                                </body>
+                                            </body>
+                                        </body>
+                                    </body>
+                                </body>
+                            </body>
+                        </body>
+                    </body>
+                </body>
+            </body>
+        </body>
+        <geom name="ceiling_plate" type="box" size="0.09 0.09 0.012" pos="0 0 0.812" rgba="0.3 0.32 0.36 1" contype="0" conaffinity="0" />
+        <geom name="ceiling_beam" type="box" size="0.42 0.035 0.02" pos="0 0 0.844" rgba="0.3 0.32 0.36 1" contype="0" conaffinity="0" />
+        <geom type="box" size="0.02 0.035 0.43" pos="-0.4 0 0.432" rgba="0.3 0.32 0.36 1" contype="0" conaffinity="0" />
+        <geom type="box" size="0.02 0.035 0.43" pos="0.4 0 0.432" rgba="0.3 0.32 0.36 1" contype="0" conaffinity="0" />
+        <geom name="table" type="box" size="0.1085 0.22 0.0075" pos="-0.1115 0 0.3645" rgba="0.55 0.42 0.3 1" contype="1" conaffinity="1" friction="1.2 0.02 0.001" />
+        <geom name="table_right" type="box" size="0.0535 0.22 0.0075" pos="0.1665 0 0.3645" rgba="0.55 0.42 0.3 1" contype="1" conaffinity="1" friction="1.2 0.02 0.001" />
+        <geom name="table_front" type="box" size="0.058 0.081 0.0075" pos="0.055 -0.139 0.3645" rgba="0.55 0.42 0.3 1" contype="1" conaffinity="1" friction="1.2 0.02 0.001" />
+        <geom name="table_back" type="box" size="0.058 0.081 0.0075" pos="0.055 0.139 0.3645" rgba="0.55 0.42 0.3 1" contype="1" conaffinity="1" friction="1.2 0.02 0.001" />
+        <geom type="box" size="0.015 0.015 0.171" pos="-0.19 -0.19 0.171" rgba="0.45 0.34 0.24 1" contype="0" conaffinity="0" />
+        <geom type="box" size="0.015 0.015 0.171" pos="-0.19 0.19 0.171" rgba="0.45 0.34 0.24 1" contype="0" conaffinity="0" />
+        <geom type="box" size="0.015 0.015 0.171" pos="0.19 -0.19 0.171" rgba="0.45 0.34 0.24 1" contype="0" conaffinity="0" />
+        <geom type="box" size="0.015 0.015 0.171" pos="0.19 0.19 0.171" rgba="0.45 0.34 0.24 1" contype="0" conaffinity="0" />
+        <body name="bowl" pos="0.055 0 0.378">
+            <geom name="bowl_floor" type="cylinder" size="0.036 0.006" pos="0 0 -0.074" rgba="0.93 0.94 0.91 1" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" solref="0.02 1" solimp="0.9 0.97 0.001" density="0" mass="0.05" />
+            <geom name="bowl_wall0" type="box" size="0.002 0.00552778 0.0346157" pos="0.0405 0 -0.034" quat="0.995543 0 0.0943082 0" rgba="0.93 0.94 0.91 1" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" solref="0.02 1" solimp="0.9 0.97 0.001" density="0" mass="0.004" />
+            <geom name="bowl_wall1" type="box" size="0.002 0.00552778 0.0346157" pos="0.03912 0.0104822 -0.034" quat="0.987026 -0.0123097 0.0935014 0.129944" rgba="0.93 0.94 0.91 1" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" solref="0.02 1" solimp="0.9 0.97 0.001" density="0" mass="0.004" />
+            <geom name="bowl_wall2" type="box" size="0.002 0.00552778 0.0346157" pos="0.035074 0.02025 -0.034" quat="0.961621 -0.0244088 0.0910948 0.257666" rgba="0.93 0.94 0.91 1" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" solref="0.02 1" solimp="0.9 0.97 0.001" density="0" mass="0.004" />
+            <geom name="bowl_wall3" type="box" size="0.002 0.00552778 0.0346157" pos="0.0286378 0.0286378 -0.034" quat="0.919762 -0.0360902 0.0871294 0.380978" rgba="0.93 0.94 0.91 1" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" solref="0.02 1" solimp="0.9 0.97 0.001" density="0" mass="0.004" />
+            <geom name="bowl_wall4" type="box" size="0.002 0.00552778 0.0346157" pos="0.02025 0.035074 -0.034" quat="0.862166 -0.0471541 0.0816733 0.497772" rgba="0.93 0.94 0.91 1" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" solref="0.02 1" solimp="0.9 0.97 0.001" density="0" mass="0.004" />
+            <geom name="bowl_wall5" type="box" size="0.002 0.00552778 0.0346157" pos="0.0104822 0.03912 -0.034" quat="0.789817 -0.0574112 0.0748198 0.606048" rgba="0.93 0.94 0.91 1" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" solref="0.02 1" solimp="0.9 0.97 0.001" density="0" mass="0.004" />
+            <geom name="bowl_wall6" type="box" size="0.002 0.00552778 0.0346157" pos="2.47991e-18 0.0405 -0.034" quat="0.703955 -0.066686 0.066686 0.703955" rgba="0.93 0.94 0.91 1" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" solref="0.02 1" solimp="0.9 0.97 0.001" density="0" mass="0.004" />
+            <geom name="bowl_wall7" type="box" size="0.002 0.00552778 0.0346157" pos="-0.0104822 0.03912 -0.034" quat="0.606048 -0.0748198 0.0574112 0.789817" rgba="0.93 0.94 0.91 1" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" solref="0.02 1" solimp="0.9 0.97 0.001" density="0" mass="0.004" />
+            <geom name="bowl_wall8" type="box" size="0.002 0.00552778 0.0346157" pos="-0.02025 0.035074 -0.034" quat="0.497772 -0.0816733 0.0471541 0.862166" rgba="0.93 0.94 0.91 1" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" solref="0.02 1" solimp="0.9 0.97 0.001" density="0" mass="0.004" />
+            <geom name="bowl_wall9" type="box" size="0.002 0.00552778 0.0346157" pos="-0.0286378 0.0286378 -0.034" quat="0.380978 -0.0871294 0.0360902 0.919762" rgba="0.93 0.94 0.91 1" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" solref="0.02 1" solimp="0.9 0.97 0.001" density="0" mass="0.004" />
+            <geom name="bowl_wall10" type="box" size="0.002 0.00552778 0.0346157" pos="-0.035074 0.02025 -0.034" quat="0.257666 -0.0910948 0.0244088 0.961621" rgba="0.93 0.94 0.91 1" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" solref="0.02 1" solimp="0.9 0.97 0.001" density="0" mass="0.004" />
+            <geom name="bowl_wall11" type="box" size="0.002 0.00552778 0.0346157" pos="-0.03912 0.0104822 -0.034" quat="0.129944 -0.0935014 0.0123097 0.987026" rgba="0.93 0.94 0.91 1" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" solref="0.02 1" solimp="0.9 0.97 0.001" density="0" mass="0.004" />
+            <geom name="bowl_wall12" type="box" size="0.002 0.00552778 0.0346157" pos="-0.0405 4.95982e-18 -0.034" quat="6.09594e-17 -0.0943082 5.77471e-18 0.995543" rgba="0.93 0.94 0.91 1" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" solref="0.02 1" solimp="0.9 0.97 0.001" density="0" mass="0.004" />
+            <geom name="bowl_wall13" type="box" size="0.002 0.00552778 0.0346157" pos="-0.03912 -0.0104822 -0.034" quat="-0.129944 -0.0935014 -0.0123097 0.987026" rgba="0.93 0.94 0.91 1" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" solref="0.02 1" solimp="0.9 0.97 0.001" density="0" mass="0.004" />
+            <geom name="bowl_wall14" type="box" size="0.002 0.00552778 0.0346157" pos="-0.035074 -0.02025 -0.034" quat="-0.257666 -0.0910948 -0.0244088 0.961621" rgba="0.93 0.94 0.91 1" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" solref="0.02 1" solimp="0.9 0.97 0.001" density="0" mass="0.004" />
+            <geom name="bowl_wall15" type="box" size="0.002 0.00552778 0.0346157" pos="-0.0286378 -0.0286378 -0.034" quat="-0.380978 -0.0871294 -0.0360902 0.919762" rgba="0.93 0.94 0.91 1" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" solref="0.02 1" solimp="0.9 0.97 0.001" density="0" mass="0.004" />
+            <geom name="bowl_wall16" type="box" size="0.002 0.00552778 0.0346157" pos="-0.02025 -0.035074 -0.034" quat="-0.497772 -0.0816733 -0.0471541 0.862166" rgba="0.93 0.94 0.91 1" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" solref="0.02 1" solimp="0.9 0.97 0.001" density="0" mass="0.004" />
+            <geom name="bowl_wall17" type="box" size="0.002 0.00552778 0.0346157" pos="-0.0104822 -0.03912 -0.034" quat="0.606048 0.0748198 0.0574112 -0.789817" rgba="0.93 0.94 0.91 1" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" solref="0.02 1" solimp="0.9 0.97 0.001" density="0" mass="0.004" />
+            <geom name="bowl_wall18" type="box" size="0.002 0.00552778 0.0346157" pos="-7.43973e-18 -0.0405 -0.034" quat="0.703955 0.066686 0.066686 -0.703955" rgba="0.93 0.94 0.91 1" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" solref="0.02 1" solimp="0.9 0.97 0.001" density="0" mass="0.004" />
+            <geom name="bowl_wall19" type="box" size="0.002 0.00552778 0.0346157" pos="0.0104822 -0.03912 -0.034" quat="0.789817 0.0574112 0.0748198 -0.606048" rgba="0.93 0.94 0.91 1" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" solref="0.02 1" solimp="0.9 0.97 0.001" density="0" mass="0.004" />
+            <geom name="bowl_wall20" type="box" size="0.002 0.00552778 0.0346157" pos="0.02025 -0.035074 -0.034" quat="0.862166 0.0471541 0.0816733 -0.497772" rgba="0.93 0.94 0.91 1" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" solref="0.02 1" solimp="0.9 0.97 0.001" density="0" mass="0.004" />
+            <geom name="bowl_wall21" type="box" size="0.002 0.00552778 0.0346157" pos="0.0286378 -0.0286378 -0.034" quat="0.919762 0.0360902 0.0871294 -0.380978" rgba="0.93 0.94 0.91 1" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" solref="0.02 1" solimp="0.9 0.97 0.001" density="0" mass="0.004" />
+            <geom name="bowl_wall22" type="box" size="0.002 0.00552778 0.0346157" pos="0.035074 -0.02025 -0.034" quat="0.961621 0.0244088 0.0910948 -0.257666" rgba="0.93 0.94 0.91 1" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" solref="0.02 1" solimp="0.9 0.97 0.001" density="0" mass="0.004" />
+            <geom name="bowl_wall23" type="box" size="0.002 0.00552778 0.0346157" pos="0.03912 -0.0104822 -0.034" quat="0.987026 0.0123097 0.0935014 -0.129944" rgba="0.93 0.94 0.91 1" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" solref="0.02 1" solimp="0.9 0.97 0.001" density="0" mass="0.004" />
+            <geom type="box" size="0.0032 0.0067482 0.0018" pos="0.047 0 0" euler="0 0 0" rgba="0.36 0.55 0.62 1" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.0032 0.0067482 0.0018" pos="0.0453985 0.0121645 0" euler="0 0 15" rgba="0.36 0.55 0.62 1" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.0032 0.0067482 0.0018" pos="0.0407032 0.0235 0" euler="0 0 30" rgba="0.36 0.55 0.62 1" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.0032 0.0067482 0.0018" pos="0.033234 0.033234 0" euler="0 0 45" rgba="0.36 0.55 0.62 1" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.0032 0.0067482 0.0018" pos="0.0235 0.0407032 0" euler="0 0 60" rgba="0.36 0.55 0.62 1" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.0032 0.0067482 0.0018" pos="0.0121645 0.0453985 0" euler="0 0 75" rgba="0.36 0.55 0.62 1" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.0032 0.0067482 0.0018" pos="2.87792e-18 0.047 0" euler="0 0 90" rgba="0.36 0.55 0.62 1" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.0032 0.0067482 0.0018" pos="-0.0121645 0.0453985 0" euler="0 0 105" rgba="0.36 0.55 0.62 1" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.0032 0.0067482 0.0018" pos="-0.0235 0.0407032 0" euler="0 0 120" rgba="0.36 0.55 0.62 1" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.0032 0.0067482 0.0018" pos="-0.033234 0.033234 0" euler="0 0 135" rgba="0.36 0.55 0.62 1" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.0032 0.0067482 0.0018" pos="-0.0407032 0.0235 0" euler="0 0 150" rgba="0.36 0.55 0.62 1" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.0032 0.0067482 0.0018" pos="-0.0453985 0.0121645 0" euler="0 0 165" rgba="0.36 0.55 0.62 1" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.0032 0.0067482 0.0018" pos="-0.047 5.75584e-18 0" euler="0 0 180" rgba="0.36 0.55 0.62 1" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.0032 0.0067482 0.0018" pos="-0.0453985 -0.0121645 0" euler="0 0 195" rgba="0.36 0.55 0.62 1" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.0032 0.0067482 0.0018" pos="-0.0407032 -0.0235 0" euler="0 0 210" rgba="0.36 0.55 0.62 1" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.0032 0.0067482 0.0018" pos="-0.033234 -0.033234 0" euler="0 0 225" rgba="0.36 0.55 0.62 1" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.0032 0.0067482 0.0018" pos="-0.0235 -0.0407032 0" euler="0 0 240" rgba="0.36 0.55 0.62 1" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.0032 0.0067482 0.0018" pos="-0.0121645 -0.0453985 0" euler="0 0 255" rgba="0.36 0.55 0.62 1" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.0032 0.0067482 0.0018" pos="-8.63376e-18 -0.047 0" euler="0 0 270" rgba="0.36 0.55 0.62 1" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.0032 0.0067482 0.0018" pos="0.0121645 -0.0453985 0" euler="0 0 285" rgba="0.36 0.55 0.62 1" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.0032 0.0067482 0.0018" pos="0.0235 -0.0407032 0" euler="0 0 300" rgba="0.36 0.55 0.62 1" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.0032 0.0067482 0.0018" pos="0.033234 -0.033234 0" euler="0 0 315" rgba="0.36 0.55 0.62 1" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.0032 0.0067482 0.0018" pos="0.0407032 -0.0235 0" euler="0 0 330" rgba="0.36 0.55 0.62 1" contype="0" conaffinity="0" density="0" />
+            <geom type="box" size="0.0032 0.0067482 0.0018" pos="0.0453985 -0.0121645 0" euler="0 0 345" rgba="0.36 0.55 0.62 1" contype="0" conaffinity="0" density="0" />
+            <site name="place_target" type="sphere" size="0.004" pos="0 0 0" rgba="0.2 0.85 0.3 0" />
+        </body>
+        <body name="obj_cube" pos="-0.051 0 0.3871">
+            <freejoint name="obj_cube_free" />
+            <geom name="obj_cube_geom" mass="0.02" rgba="0.15 0.6 0.9 1" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" type="box" size="0.015 0.015 0.015" />
+        </body>
+        <body name="obj_apple" pos="1.55 1.2 0.0171">
+            <freejoint name="obj_apple_free" />
+            <geom name="obj_apple_geom" mass="0.0291" rgba="0.78 0.1 0.12 1" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" type="ellipsoid" size="0.022 0.022 0.017" />
+            <geom name="obj_apple_stem" mass="0.0009" rgba="0.35 0.22 0.1 1" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" type="cylinder" size="0.00231579 0.00463158" pos="0.00115789 0 0.0193158" euler="8 0 0" />
+            <geom type="ellipsoid" size="0.00694737 0.00301053 0.00115789" pos="0.00578947 0 0.0216316" euler="0 -25 0" rgba="0.25 0.6 0.15 1" contype="0" conaffinity="0" density="0" />
+        </body>
+        <body name="obj_banana" pos="1.7 1.2 0.0101">
+            <freejoint name="obj_banana_free" />
+            <geom name="obj_banana_geom0" mass="0.00357143" rgba="0.96 0.83 0.2 1" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" type="capsule" fromto="-0.0482091 0.0175467 0 -0.035869 0.00913338 0" size="0.00838367" />
+            <geom name="obj_banana_geom1" mass="0.00357143" rgba="0.96 0.83 0.2 1" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" type="capsule" fromto="-0.035869 0.00913338 0 -0.0221066 0.00333204 0" size="0.00928163" />
+            <geom name="obj_banana_geom2" mass="0.00357143" rgba="0.96 0.83 0.2 1" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" type="capsule" fromto="-0.0221066 0.00333204 0 -0.00746759 0.000372692 0" size="0.00982041" />
+            <geom name="obj_banana_geom3" mass="0.00357143" rgba="0.96 0.83 0.2 1" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" type="capsule" fromto="-0.00746759 0.000372692 0 0.00746759 0.000372692 0" size="0.01" />
+            <geom name="obj_banana_geom4" mass="0.00357143" rgba="0.96 0.83 0.2 1" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" type="capsule" fromto="0.00746759 0.000372692 0 0.0221066 0.00333204 0" size="0.00982041" />
+            <geom name="obj_banana_geom5" mass="0.00357143" rgba="0.96 0.83 0.2 1" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" type="capsule" fromto="0.0221066 0.00333204 0 0.035869 0.00913338 0" size="0.00928163" />
+            <geom name="obj_banana_geom6" mass="0.00357143" rgba="0.96 0.83 0.2 1" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" type="capsule" fromto="0.035869 0.00913338 0 0.0482091 0.0175467 0" size="0.00838367" />
+            <geom type="sphere" size="0.0045" pos="-0.0482091 0.0175467 0" rgba="0.3 0.22 0.08 1" contype="0" conaffinity="0" density="0" />
+            <geom type="sphere" size="0.0045" pos="0.0482091 0.0175467 0" rgba="0.3 0.22 0.08 1" contype="0" conaffinity="0" density="0" />
+        </body>
+        <body name="obj_ball" pos="1.85 1.2 0.0161">
+            <freejoint name="obj_ball_free" />
+            <geom name="obj_ball_geom" mass="0.012" rgba="0.8 0.9 0.2 1" contype="1" conaffinity="1" condim="6" friction="1.2 0.02 0.002" type="sphere" size="0.016" />
+        </body>
+        <body name="obj_can" pos="2 1.2 0.0191">
+            <freejoint name="obj_can_free" />
+            <geom name="obj_can_geom" mass="0.02" rgba="0.72 0.74 0.78 1" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" type="cylinder" size="0.011 0.019" />
+            <geom type="cylinder" size="0.00968 0.0012" pos="0 0 -0.0182" rgba="0.55 0.58 0.62 1" contype="0" conaffinity="0" density="0" />
+            <geom type="cylinder" size="0.00968 0.0012" pos="0 0 0.0182" rgba="0.55 0.58 0.62 1" contype="0" conaffinity="0" density="0" />
+            <geom type="cylinder" size="0.01122 0.00798" pos="0 0 0.001" rgba="0.1 0.55 0.45 1" contype="0" conaffinity="0" density="0" />
+        </body>
+        <body name="obj_cup" pos="2.15 1.2 0.0161">
+            <freejoint name="obj_cup_free" />
+            <geom name="obj_cup_geom" mass="0.018" rgba="0.95 0.78 0.12 1" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" type="cylinder" size="0.013 0.016" />
+            <geom type="cylinder" size="0.0104 0.0006" pos="0 0 0.016" rgba="0.25 0.18 0.08 1" contype="0" conaffinity="0" density="0" />
+            <geom type="cylinder" size="0.01352 0.0012" pos="0 0 0.0148" rgba="0.98 0.98 0.95 1" contype="0" conaffinity="0" density="0" />
+            <geom type="capsule" size="0.0022" fromto="0.013 0 0.008 0.019 0 0.0045" rgba="0.95 0.78 0.12 1" contype="0" conaffinity="0" density="0" />
+            <geom type="capsule" size="0.0022" fromto="0.013 0 -0.008 0.019 0 -0.0045" rgba="0.95 0.78 0.12 1" contype="0" conaffinity="0" density="0" />
+            <geom type="capsule" size="0.0022" fromto="0.019 0 0.0045 0.019 0 -0.0045" rgba="0.95 0.78 0.12 1" contype="0" conaffinity="0" density="0" />
+        </body>
+        <body name="obj_teddy" pos="2.3 1.2 0.0121">
+            <freejoint name="obj_teddy_free" />
+            <geom name="obj_teddy_body" mass="0.014" rgba="0.55 0.34 0.17 1" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" type="ellipsoid" size="0.0135 0.01215 0.012" />
+            <geom name="obj_teddy_head" mass="0.006" rgba="0.55 0.34 0.17 1" contype="1" conaffinity="1" condim="4" friction="1.2 0.02 0.001" type="sphere" size="0.0085" pos="0 0 0.018375" />
+            <geom type="sphere" size="0.0034" pos="0 -0.006375 0.024325" rgba="0.55 0.34 0.17 1" contype="0" conaffinity="0" density="0" />
+            <geom type="sphere" size="0.0011" pos="0.007225 -0.003 0.020875" rgba="0.05 0.04 0.03 1" contype="0" conaffinity="0" density="0" />
+            <geom type="ellipsoid" size="0.0035 0.0035 0.006" pos="0.002 -0.012825 0.002" rgba="0.55 0.34 0.17 1" contype="0" conaffinity="0" density="0" />
+            <geom type="ellipsoid" size="0.005 0.004 0.0035" pos="0.00945 -0.006075 -0.0084" rgba="0.55 0.34 0.17 1" contype="0" conaffinity="0" density="0" />
+            <geom type="sphere" size="0.0034" pos="0 0.006375 0.024325" rgba="0.55 0.34 0.17 1" contype="0" conaffinity="0" density="0" />
+            <geom type="sphere" size="0.0011" pos="0.007225 0.003 0.020875" rgba="0.05 0.04 0.03 1" contype="0" conaffinity="0" density="0" />
+            <geom type="ellipsoid" size="0.0035 0.0035 0.006" pos="0.002 0.012825 0.002" rgba="0.55 0.34 0.17 1" contype="0" conaffinity="0" density="0" />
+            <geom type="ellipsoid" size="0.005 0.004 0.0035" pos="0.00945 0.006075 -0.0084" rgba="0.55 0.34 0.17 1" contype="0" conaffinity="0" density="0" />
+            <geom type="sphere" size="0.0038" pos="0.0068 0 0.017375" rgba="0.85 0.7 0.5 1" contype="0" conaffinity="0" density="0" />
+            <geom type="ellipsoid" size="0.0015 0.0055 0.007" pos="0.0108 0 0" rgba="0.85 0.7 0.5 1" contype="0" conaffinity="0" density="0" />
+        </body>
+        <camera name="task_camera" pos="0.62 -0.62 0.78" xyaxes="0.707 0.707 0 -0.39 0.39 0.834" />
+    </worldbody>
+    <actuator>
+        <position joint="bend_x_1" kp="50" />
+        <position joint="bend_y_1" kp="50" />
+        <position joint="extension_1" kp="1000" />
+        <position joint="bend_x_2" kp="50" />
+        <position joint="bend_y_2" kp="50" />
+        <position joint="extension_2" kp="1000" />
+        <position joint="bend_x_3" kp="50" />
+        <position joint="bend_y_3" kp="50" />
+        <position joint="extension_3" kp="1000" />
+        <position joint="bend_x_4" kp="50" />
+        <position joint="bend_y_4" kp="50" />
+        <position joint="extension_4" kp="1000" />
+        <position joint="bend_x_5" kp="50" />
+        <position joint="bend_y_5" kp="50" />
+        <position joint="extension_5" kp="1000" />
+        <position joint="bend_x_6" kp="50" />
+        <position joint="bend_y_6" kp="50" />
+        <position joint="extension_6" kp="1000" />
+        <position joint="bend_x_7" kp="50" />
+        <position joint="bend_y_7" kp="50" />
+        <position joint="extension_7" kp="1000" />
+        <position joint="bend_x_8" kp="50" />
+        <position joint="bend_y_8" kp="50" />
+        <position joint="extension_8" kp="1000" />
+        <position joint="bend_x_9" kp="50" />
+        <position joint="bend_y_9" kp="50" />
+        <position joint="extension_9" kp="1000" />
+        <position joint="bend_x_10" kp="50" />
+        <position joint="bend_y_10" kp="50" />
+        <position joint="extension_10" kp="1000" />
+        <position name="act_finger0_joint0" joint="finger0_joint0" kp="0.25" forcerange="-0.08 0.08" forcelimited="true" />
+        <position name="act_finger0_joint1" joint="finger0_joint1" kp="0.25" forcerange="-0.08 0.08" forcelimited="true" />
+        <position name="act_finger0_joint2" joint="finger0_joint2" kp="0.25" forcerange="-0.08 0.08" forcelimited="true" />
+        <position name="act_finger0_joint3" joint="finger0_joint3" kp="0.25" forcerange="-0.08 0.08" forcelimited="true" />
+        <position name="act_finger1_joint0" joint="finger1_joint0" kp="0.25" forcerange="-0.08 0.08" forcelimited="true" />
+        <position name="act_finger1_joint1" joint="finger1_joint1" kp="0.25" forcerange="-0.08 0.08" forcelimited="true" />
+        <position name="act_finger1_joint2" joint="finger1_joint2" kp="0.25" forcerange="-0.08 0.08" forcelimited="true" />
+        <position name="act_finger1_joint3" joint="finger1_joint3" kp="0.25" forcerange="-0.08 0.08" forcelimited="true" />
+        <position name="act_finger2_joint0" joint="finger2_joint0" kp="0.25" forcerange="-0.08 0.08" forcelimited="true" />
+        <position name="act_finger2_joint1" joint="finger2_joint1" kp="0.25" forcerange="-0.08 0.08" forcelimited="true" />
+        <position name="act_finger2_joint2" joint="finger2_joint2" kp="0.25" forcerange="-0.08 0.08" forcelimited="true" />
+        <position name="act_finger2_joint3" joint="finger2_joint3" kp="0.25" forcerange="-0.08 0.08" forcelimited="true" />
+    </actuator>
+</mujoco>

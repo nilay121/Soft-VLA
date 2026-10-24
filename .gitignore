@@ -9,6 +9,7 @@
 !/requirements.txt
 !/simulator/
 !/VLA_control/
+!/docs/
 
 # --- VLA_control: only the two experiments (no Benchmarks, Ablation, figures)
 /VLA_control/*
